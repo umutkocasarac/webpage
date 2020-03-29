@@ -8,30 +8,24 @@ module.exports = {
 
 
   // Your twitter handle
-  twitter: null,
+  twitter: https://twitter.com/umutkocasarac,
 
   // Your name
-  name: null,
+  name: Umut,
 
   // The event we are at
-  event: "Smashing Conference",
+  event: "",
 
   // The repository to which this site is linked
   repo : process.env.REPOSITORY_URL
     ? process.env.REPOSITORY_URL.replace('git@github.com:','https://github.com/')
-    : 'https://github.com/netlify/my-first-few-deploys',
+    : 'https://github.com/umutkocasarac/kocasarac.com',
 
   // The site name used in the URL of the Netlify Admin UI
   // (Which we can figure out from the deployed URL)
   sitename: process.env.URL
     ? process.env.URL.split('https://')[1].split('.netlify.com')[0]
     : 'playwith',
-
-  // Something to tweet which includes a link to
-  // this instance of the example site
-  tweet: `I just went from zero to deployed on @Netlify in a matter of seconds!
-Take a look at my site at ${process.env.URL || 'https://playwith.netlify.com'}!
-#SwitchToNetlify at #SmashingConf`,
 
   url: process.env.URL
 
