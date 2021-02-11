@@ -1,0 +1,52 @@
+<html>
+
+<head>
+  <title> Guessinggame2 by professor Cinar
+  </title>
+  <script>
+    var number = Math.round(Math.random() * 100 + 1);
+    var tries = 0;
+
+    function newGame() {
+      document.getElementById("guess").focus();
+      document.getElementById("guess").select();
+      tries = 0;
+      number = Math.round(Math.random() * 100 + 1);
+    }
+    function checkGuess() {
+      var guess = document.getElementById("guess").value;
+      var msg = ""
+      tries++;
+      if (guess > number) {
+        msg = guess + " Too high Try again";
+      } else if (guess < number) {
+        msg = guess + " Too low Try again";
+      } else {
+        msg = guess + " Is Correct, You Win. Try a new game";
+        msg = msg + " You won in " + tries + " tries.";
+
+       var scoreboard = document.getElementById("scoreboard");
+       scoreboard.innerHTML =
+          "You guessed " + guess + " in " + tries + " tries. <br>"       
+
+
+
+        newGame();
+      }
+      document.getElementById("output").innerHTML = msg;
+      document.getElementById("guess").focus();
+      document.getElementById("guess").select();
+    }
+  </script>
+</head>
+<body onload="newGame()">
+  <h1> Cinar's Guessing Game </h1>
+  <form onsubmit="checkGuess(); return false">
+    Enter a number between 1 and 100
+    <input type="text" id="guess" size="2">
+    <button type="button" onclick="checkGuess()"> Guess! </button>
+  </form>
+  <h3 id="output">Guess a number and press the button.</h3>
+  <h4 id="scoreboard"> </h4>
+</body>
+</html>
