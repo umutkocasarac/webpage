@@ -1,0 +1,47 @@
+<html>
+<body bgcolor="#aaaaff">
+  <h1>Cinar's Drawing program </h1>
+  <canvas id="imgCanvas" width="1600" height="1400" onclick="draw(event)" onmousemove="draw(event)"> </canvas>
+  <script>
+    var radius = 30;
+    var grow = true;
+
+    function randColor() {
+      var r = Math.round(Math.random() * 240 + 16);
+      var g = Math.round(Math.random() * 240 + 16);
+      var b = Math.round(Math.random() * 240 + 16);
+      var color = "#" + r.toString(16) + g.toString(16) + b.toString(16)
+      console.log(color)
+      return color
+    }
+
+    function draw(e) {
+
+      if (grow) {
+        radius++;
+      } else {
+        radius--;
+      }
+      if (radius > 50) {
+        grow = false;
+      } else if (radius < 20) {
+        grow = true;
+      }
+
+      var canvas = document.getElementById("imgCanvas");
+      var ctx = canvas.getContext("2d");
+      var rect = canvas.getBoundingClientRect();
+      var posx = e.clientX - rect.left;
+      var posy = e.clientY - rect.top;
+      ctx.fillStyle = randColor() + "33";
+      ctx.beginPath();
+      ctx.arc(posx, posy, radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = "Black";
+      ctx.beginPath();
+      ctx.arc(posx, posy, radius, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+  </script>
+</body>
+</html>
